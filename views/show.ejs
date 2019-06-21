@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Que:- <%= stack.title %></div>
+        <div class="ui top attached segment"><%= stack.description %></div>
+
+    <div class="ui huge header">Possible Solution:</div>
+    <%  stack.answer.forEach(function(Stack){ %>
+        <div class="ui top attached segment"><%= Stack.answer %>
+            <br>
+            <div class="meta_show">
+                <span>Name:<%= Stack.answer_name%> </span>
+                <br>
+                <span>Created Date:<%= Stack.answer_created_date.toDateString()%> </span>
+            </div>
+        </div>
+       
+        <% }) %>
+    <form action="/dash/<%= stack._id %>" method="POST">
+        <br>
+        <textarea name="stack[answer]" cols="50" rows="10" placeholder="Write Answer here"></textarea>
+        <br>
+        <textarea name="stack[answer_name]" placeholder="Enter Your name"></textarea>
+        <br>
+        <button type="submit" class="ui basic button">Submit</button>
+    </form>
+   
+    
+
+</div>    
+
+<% include ./partials/footer %>

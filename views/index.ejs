@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div class="ui main text container">
+    <div class="ui huge header">Welcome to JR. StackOverflow</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+                <% blogs.forEach(function(Stack){ %>
+                    <div class="item">
+                        <div class="content">
+                            <a class="header" href="/dash/<%= Stack._id %>">Que. <%=Stack.title %></a>
+                            <div class="meta">
+                                <span><%= Stack.created_date.toDateString() %> </span>
+                            </div>
+                            <div class="description">
+                                <p><%- Stack.description.substring(0,100) %>...</p>
+                            </div>
+                            <div class="extra">
+                                <a class="ui basic violet button" href="/dash/<%= Stack._id %>">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+         </div>
+    </div>
+</div>
+
+
+
+
+<% include ./partials/footer %>
